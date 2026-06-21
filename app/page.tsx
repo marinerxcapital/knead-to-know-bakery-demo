@@ -2,51 +2,60 @@ import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/data/products";
 import { testimonials } from "@/data/testimonials";
-import { Container } from "@/components/Container";
-import { ButtonLink } from "@/components/Button";
-import { SectionHeading } from "@/components/SectionHeading";
-import { ProductGrid } from "@/components/ProductCard";
-import { FeatureCard } from "@/components/FeatureCard";
-import { CTASection } from "@/components/CTASection";
-import { NewsletterForm } from "@/components/Forms";
 import { assets } from "@/lib/assets";
+import { ButtonLink } from "@/components/Button";
+import { Container } from "@/components/Container";
+import { CTASection } from "@/components/CTASection";
+import { FeatureCard } from "@/components/FeatureCard";
+import { NewsletterForm } from "@/components/Forms";
+import { ProductGrid } from "@/components/ProductCard";
+import { SectionHeading } from "@/components/SectionHeading";
 
-const categories = [
-  ["Sourdough", "Slow-fermented, deeply flavored loaves.", "/sourdough"],
-  ["Cookies", "Gourmet classics with serious intention.", "/cookies"],
-  ["Pastries", "Laminated, seasonal, made for mornings.", "/pastries"],
-  ["Seasonal Boxes", "The easiest way to give something good.", "/order-online"],
+const collections = [
+  { number: "01", name: "Sourdough", note: "The slow, good kind.", href: "/sourdough" },
+  { number: "02", name: "Cookies", note: "A little theatrical.", href: "/cookies" },
+  { number: "03", name: "Pastries", note: "Made before the city wakes.", href: "/pastries" },
+  { number: "04", name: "Gift Boxes", note: "Arrive with something lovely.", href: "/order-online" }
 ];
 
 export default function Home() {
+  const featured = products.filter(product => product.featured).slice(0, 6);
+
   return <>
-    <section className="relative overflow-hidden bg-ivory">
-      <Container className="grid min-h-[610px] items-center gap-10 py-14 md:grid-cols-[.92fr_1.08fr]">
-        <div className="relative z-10">
-          <p className="eyebrow">Knead To Know / Sweet & Sour</p>
-          <h1 className="display mt-5 max-w-3xl">Small-Batch Sourdough. Gourmet Cookies. Baked With Intention.</h1>
-          <p className="mt-6 max-w-xl text-sm leading-7 text-muted">Knead To Know is a premium artisan bakery crafting naturally leavened breads, refined sweets, and seasonal bakery boxes.</p>
-          <div className="mt-8 flex flex-wrap gap-3"><ButtonLink href="/order-online">Order online</ButtonLink><ButtonLink href="/menu" variant="light">View menu</ButtonLink></div>
+    <section className="border-b border-ink/10 bg-white py-2.5 text-center">
+      <p className="text-[9px] font-bold uppercase tracking-[.2em] text-muted">Small-batch bakes / thoughtfully made for pickup</p>
+    </section>
+
+    <section className="relative overflow-hidden bg-[#f9f8f5]">
+      <div className="pointer-events-none absolute inset-0 opacity-60" style={{ backgroundImage: "radial-gradient(circle at 80% 18%, rgba(164,123,53,.12), transparent 23%), radial-gradient(circle at 9% 88%, rgba(233,224,208,.72), transparent 28%)" }}/>
+      <Container className="relative grid min-h-[690px] items-center gap-12 py-14 lg:grid-cols-[.92fr_1.08fr] lg:py-20">
+        <div className="max-w-2xl">
+          <p className="eyebrow">Artisan bakery / Est. 2024</p>
+          <h1 className="mt-5 font-serif text-5xl leading-[.94] tracking-[-.055em] text-ink sm:text-6xl lg:text-[5.55rem]">The everyday bake,<br/><em className="font-serif font-normal text-gold">made extraordinary.</em></h1>
+          <p className="mt-7 max-w-lg text-[15px] leading-7 text-muted">Naturally leavened sourdough, composed sweets, and generous bakery boxes for people who believe the details are the point.</p>
+          <div className="mt-9 flex flex-wrap gap-3"><ButtonLink href="/order-online">Reserve your pickup</ButtonLink><ButtonLink href="/menu" variant="light">Explore the menu</ButtonLink></div>
+          <div className="mt-12 flex items-center gap-7 border-t border-ink/12 pt-5 text-[10px] font-bold uppercase tracking-[.14em] text-muted"><span>Slow fermented</span><span className="h-1 w-1 rounded-full bg-gold"/><span>Small batch</span><span className="h-1 w-1 rounded-full bg-gold"/><span>Made to gather</span></div>
         </div>
-        <div className="relative mx-auto aspect-[16/10] w-full overflow-hidden border border-gold/40 bg-white shadow-soft">
-          <Image src={assets.banner} alt="Knead To Know bakery banner with sourdough and wheat" fill priority className="object-cover"/>
+
+        <div className="relative mx-auto w-full max-w-2xl pb-7 pr-0 sm:pr-8">
+          <div className="absolute bottom-0 right-0 h-[88%] w-[92%] border border-gold/45"/>
+          <div className="relative aspect-[16/10] overflow-hidden border border-ink/10 bg-white p-2 shadow-[0_24px_70px_rgba(49,38,25,.11)]"><Image src={assets.banner} alt="Knead To Know artisan bakery banner with sourdough and wheat" fill priority className="object-cover p-2"/></div>
+          <div className="absolute -bottom-1 left-4 max-w-[210px] border border-ink/10 bg-white px-5 py-4 shadow-soft sm:left-8"><p className="eyebrow">This week&apos;s ritual</p><p className="mt-2 font-serif text-lg leading-tight">Country loaf,<br/>cultured butter, good company.</p></div>
         </div>
       </Container>
     </section>
 
-    <section className="section"><Container><SectionHeading eyebrow="The collection" title="A thoughtful bakery, from the first fold to the final ribbon."/>
-      <div className="mt-10 grid gap-px border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">{categories.map(([name, description, href], index) => <Link href={href} key={name} className="group bg-white p-6 transition hover:bg-ivory"><p className="eyebrow">0{index + 1}</p><h3 className="mt-7 font-serif text-2xl">{name}</h3><p className="mt-3 text-sm leading-6 text-muted">{description}</p><span className="mt-8 block text-[10px] font-bold uppercase tracking-[.12em] text-gold">Explore</span></Link>)}</div>
-    </Container></section>
+    <section className="bg-white py-7"><Container className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"><p className="font-serif text-2xl tracking-[-.025em]">A bakery with a quieter kind of confidence.</p><Link href="/about" className="text-[10px] font-bold uppercase tracking-[.15em] text-gold underline underline-offset-4">Our story</Link></Container></section>
 
-    <section className="section bg-ivory"><Container><div className="flex flex-wrap items-end justify-between gap-5"><SectionHeading eyebrow="Fresh from the oven" title="A few favorites, for now."/><Link href="/menu" className="text-[11px] font-bold uppercase tracking-[.14em] underline underline-offset-4">Full menu</Link></div><div className="mt-10"><ProductGrid products={products.filter(product => product.featured).slice(0, 6)}/></div></Container></section>
+    <section className="border-y border-ink/10 bg-[#fcfbf8] py-4"><Container className="grid grid-cols-2 divide-x divide-y divide-ink/10 border-l border-t border-ink/10 lg:grid-cols-4 lg:divide-y-0">{collections.map(collection => <Link href={collection.href} key={collection.name} className="group min-h-36 border-b border-r border-ink/10 p-5 transition hover:bg-[#f4efe6] sm:p-6"><p className="eyebrow">{collection.number}</p><h2 className="mt-5 font-serif text-2xl leading-none">{collection.name}</h2><p className="mt-2 text-xs text-muted">{collection.note}</p><span className="mt-4 block text-[10px] font-bold uppercase tracking-[.12em] text-gold">Discover</span></Link>)}</Container></section>
 
-    <section className="section"><Container><div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><SectionHeading eyebrow="The good kind of slow" title="Built around fermentation, craft, and timing." copy="We think the best things arrive with a little patience. Every bake begins with a living starter and ends when it is actually ready."/><div className="grid gap-8 sm:grid-cols-2"><FeatureCard number="01" title="Naturally leavened">Our breads get the long, quiet fermentation they deserve.</FeatureCard><FeatureCard number="02" title="Small batch">We bake with focus, keeping every run deliberately limited.</FeatureCard><FeatureCard number="03" title="Carefully finished">Texture, balance, and beauty get equal attention.</FeatureCard><FeatureCard number="04" title="Ready for pickup">The good part: a beautifully made order, waiting for you.</FeatureCard></div></div></Container></section>
+    <section className="section bg-white"><Container><div className="flex flex-wrap items-end justify-between gap-6"><SectionHeading eyebrow="The house favorites" title="Made for the first bite, and the last crumb." copy="A few things we would never want you to miss."/><Link href="/menu" className="text-[10px] font-bold uppercase tracking-[.15em] text-gold underline underline-offset-4">See all bakes</Link></div><div className="mt-10"><ProductGrid products={featured}/></div></Container></section>
 
-    <section className="bg-[#e9e0d0] py-16"><Container className="grid items-center gap-10 md:grid-cols-2"><div className="border border-gold/40 bg-white p-8 sm:p-12"><p className="eyebrow">Gifting, beautifully handled</p><h2 className="mt-4 font-serif text-4xl leading-tight">A very good reason to arrive with a box.</h2><p className="mt-5 text-sm leading-7 text-muted">Cookie boxes, bread bags, catering trays, and seasonal gifts, finished with the same restraint and care as what is inside.</p><ButtonLink href="/catering" variant="gold" className="mt-7">Plan a spread</ButtonLink></div><div className="relative mx-auto aspect-square w-full max-w-sm border border-ink/20 bg-ink"><Image src={assets.logo} alt="Knead To Know packaging mark" fill className="object-contain p-12 brightness-0 invert"/></div></Container></section>
+    <section className="overflow-hidden bg-[#f4f0e9] py-16 sm:py-24"><Container className="grid items-center gap-12 lg:grid-cols-[.72fr_1.28fr]"><div className="relative mx-auto aspect-square w-full max-w-sm border border-gold/50 bg-white"><div className="absolute inset-4 border border-ink/10"/><Image src={assets.logo} alt="Knead To Know Sweet and Sour bakery mark" fill className="object-contain p-11"/></div><div><p className="eyebrow">The art of slow</p><h2 className="mt-4 max-w-2xl font-serif text-4xl leading-[1.05] tracking-[-.04em] sm:text-5xl">Some things improve when you give them time.</h2><p className="mt-6 max-w-xl text-sm leading-7 text-muted">We begin with a living starter, use excellent butter and chocolate, and make in smaller quantities than is probably sensible. The result is bread with real character, sweets with clarity, and a bakery worth seeking out.</p><div className="mt-9 grid gap-7 sm:grid-cols-3"><FeatureCard number="01" title="Leavened">Time makes a more expressive loaf.</FeatureCard><FeatureCard number="02" title="Limited">We make enough to do it well.</FeatureCard><FeatureCard number="03" title="Finished">Every order gets a final touch.</FeatureCard></div></div></Container></section>
 
-    <section className="section"><Container><SectionHeading eyebrow="From the table" title="The kind words we keep close." center/><div className="mt-10 grid gap-4 md:grid-cols-3">{testimonials.map(testimonial => <figure className="border border-ink/10 p-6" key={testimonial.name}><blockquote className="font-serif text-xl leading-8">&ldquo;{testimonial.quote}&rdquo;</blockquote><figcaption className="mt-8 text-[10px] font-bold uppercase tracking-[.13em] text-gold">{testimonial.name} <span className="text-muted">/ {testimonial.detail}</span></figcaption></figure>)}</div></Container></section>
+    <section className="section bg-white"><Container><div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr]"><div><p className="eyebrow">A note for the table</p><blockquote className="mt-5 max-w-xl font-serif text-3xl leading-tight tracking-[-.03em] sm:text-4xl">&ldquo;The country loaf has the kind of crust you hear before you taste.&rdquo;</blockquote><p className="mt-6 text-[10px] font-bold uppercase tracking-[.15em] text-gold">Maya R. / Weekend regular</p></div><div className="grid gap-4 sm:grid-cols-2">{testimonials.slice(1).map(testimonial => <figure key={testimonial.name} className="border border-ink/10 bg-[#fcfbf8] p-6"><blockquote className="font-serif text-xl leading-7">&ldquo;{testimonial.quote}&rdquo;</blockquote><figcaption className="mt-7 text-[10px] font-bold uppercase tracking-[.13em] text-gold">{testimonial.name}<span className="text-muted"> / {testimonial.detail}</span></figcaption></figure>)}</div></div></Container></section>
 
-    <section className="bg-ivory py-16"><Container className="max-w-3xl text-center"><SectionHeading eyebrow="Keep in the loop" title="The seasonal list." copy="A brief, lovely note when a limited bake, market weekend, or seasonal box is worth knowing about." center/><div className="mx-auto max-w-md"><NewsletterForm/></div></Container></section>
-    <CTASection/>
+    <section className="border-y border-ink/10 bg-[#f9f8f5] py-16"><Container className="grid items-center gap-8 lg:grid-cols-[1fr_.8fr]"><div><p className="eyebrow">The seasonal list</p><h2 className="mt-3 font-serif text-4xl tracking-[-.035em]">Good things, before they&apos;re gone.</h2><p className="mt-4 max-w-xl text-sm leading-7 text-muted">An occasional note about limited bakes, holiday boxes, and the weeks that call for something extra.</p></div><NewsletterForm/></Container></section>
+    <CTASection eyebrow="A table worth setting" title="Bring home something beautifully made." copy="Order a considered bakery box, a warm loaf, or a little too many cookies."/>
   </>;
 }
