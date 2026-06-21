@@ -1,5 +1,13 @@
 import Image from "next/image";
-import { Container } from "./Container";
-import { ButtonLink } from "./Button";
 import { assets } from "@/lib/assets";
-export function PageHero({eyebrow,title,copy,cta="Order online",href="/order-online",visual="logo"}:{eyebrow:string;title:string;copy:string;cta?:string;href?:string;visual?:"logo"|"banner"}){const isBanner=visual==="banner";return <section className="overflow-hidden bg-ivory"><Container className="grid min-h-[430px] items-center gap-10 py-14 md:grid-cols-[1.1fr_.9fr] md:py-20"><div><p className="eyebrow">{eyebrow}</p><h1 className="display mt-4 max-w-3xl">{title}</h1><p className="mt-6 max-w-xl text-sm leading-7 text-muted">{copy}</p><ButtonLink href={href} className="mt-8">{cta}</ButtonLink></div><div className={`relative mx-auto w-full overflow-hidden border border-gold/40 bg-white ${isBanner?"aspect-[16/10] max-w-xl":"aspect-square max-w-sm"}`}>{isBanner?<Image src={assets.banner} alt="Knead To Know artisan bakery banner with sourdough and wheat" fill className="object-cover"/>:<><div className="absolute inset-5 border border-ink/10"/><Image src={assets.logo} alt="Knead To Know Sweet & Sour mark" fill className="object-contain p-10"/></>}</div></Container></section>}
+import { ButtonLink } from "./Button";
+import { Container } from "./Container";
+
+type HeroVisual = "logo" | "banner" | "video";
+
+export function PageHero({ eyebrow, title, copy, cta = "Order online", href = "/order-online", visual = "logo", videoSrc }: { eyebrow: string; title: string; copy: string; cta?: string; href?: string; visual?: HeroVisual; videoSrc?: string }) {
+  const isBanner = visual === "banner";
+  const isVideo = visual === "video" && videoSrc;
+
+  return <section className="overflow-hidden bg-ivory"><Container className="grid min-h-[430px] items-center gap-10 py-14 md:grid-cols-[1.1fr_.9fr] md:py-20"><div><p className="eyebrow">{eyebrow}</p><h1 className="display mt-4 max-w-3xl">{title}</h1><p className="mt-6 max-w-xl text-sm leading-7 text-muted">{copy}</p><ButtonLink href={href} className="mt-8">{cta}</ButtonLink></div><div className={`relative mx-auto w-full overflow-hidden border border-gold/40 bg-white ${isBanner || isVideo ? "aspect-[16/10] max-w-xl" : "aspect-square max-w-sm"}`}>{isVideo ? <video className="h-full w-full object-cover" src={videoSrc} poster={assets.banner} autoPlay loop muted playsInline preload="metadata"/> : isBanner ? <Image src={assets.banner} alt="Knead To Know artisan bakery banner with sourdough and wheat" fill className="object-cover"/> : <><div className="absolute inset-5 border border-ink/10"/><Image src={assets.logo} alt="Knead To Know Sweet & Sour mark" fill className="object-contain p-10"/></>}</div></Container></section>;
+}

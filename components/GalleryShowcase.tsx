@@ -14,7 +14,7 @@ function mediaLabel(type: GalleryItem["mediaType"]) {
 function Media({ item, detailed = false }: { item: GalleryItem; detailed?: boolean }) {
   const source = item.src ? publicAsset(item.src) : undefined;
   if (item.embedUrl && detailed) return <iframe className="h-full w-full" src={item.embedUrl} title={item.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen/>;
-  if (source && item.mediaType !== "image") return <video className="h-full w-full object-cover" src={source} controls={detailed} muted={!detailed} playsInline loop={!detailed} autoPlay={!detailed}/>;
+  if (source && item.mediaType !== "image") return <video className="h-full w-full object-cover" src={source} controls={detailed} muted playsInline loop autoPlay/>;
   // Gallery sources are user-configured public assets, so the native element is intentional here.
   // eslint-disable-next-line @next/next/no-img-element
   if (source) return <img src={source} alt={item.title} className="h-full w-full object-cover"/>;

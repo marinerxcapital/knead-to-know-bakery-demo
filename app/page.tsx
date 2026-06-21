@@ -1,8 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/data/products";
 import { testimonials } from "@/data/testimonials";
-import { assets } from "@/lib/assets";
+import { assets, videos } from "@/lib/assets";
 import { ButtonLink } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { CTASection } from "@/components/CTASection";
@@ -39,7 +38,7 @@ export default function Home() {
 
         <div className="relative mx-auto w-full max-w-2xl pb-7 pr-0 sm:pr-8">
           <div className="absolute bottom-0 right-0 h-[88%] w-[92%] border border-gold/45"/>
-          <div className="relative aspect-[16/10] overflow-hidden border border-ink/10 bg-white p-2 shadow-[0_24px_70px_rgba(49,38,25,.11)]"><Image src={assets.banner} alt="Knead To Know artisan bakery banner with sourdough and wheat" fill priority className="object-cover p-2"/></div>
+          <div className="relative aspect-[16/10] overflow-hidden border border-ink/10 bg-white p-2 shadow-[0_24px_70px_rgba(49,38,25,.11)]"><video className="h-full w-full object-cover" src={videos.hero} poster={assets.banner} autoPlay loop muted playsInline preload="metadata"/></div>
           <div className="absolute -bottom-1 left-4 max-w-[210px] border border-ink/10 bg-white px-5 py-4 shadow-soft sm:left-8"><p className="eyebrow">This week&apos;s ritual</p><p className="mt-2 font-serif text-lg leading-tight">Country loaf,<br/>cultured butter, good company.</p></div>
         </div>
       </Container>
@@ -51,7 +50,7 @@ export default function Home() {
 
     <section className="section bg-white"><Container><div className="flex flex-wrap items-end justify-between gap-6"><SectionHeading eyebrow="The house favorites" title="Made for the first bite, and the last crumb." copy="A few things we would never want you to miss."/><Link href="/menu" className="text-[10px] font-bold uppercase tracking-[.15em] text-gold underline underline-offset-4">See all bakes</Link></div><div className="mt-10"><ProductGrid products={featured}/></div></Container></section>
 
-    <section className="overflow-hidden bg-[#f4f0e9] py-16 sm:py-24"><Container className="grid items-center gap-12 lg:grid-cols-[.72fr_1.28fr]"><div className="relative mx-auto aspect-square w-full max-w-sm border border-gold/50 bg-white"><div className="absolute inset-4 border border-ink/10"/><Image src={assets.logo} alt="Knead To Know Sweet and Sour bakery mark" fill className="object-contain p-11"/></div><div><p className="eyebrow">The art of slow</p><h2 className="mt-4 max-w-2xl font-serif text-4xl leading-[1.05] tracking-[-.04em] sm:text-5xl">Some things improve when you give them time.</h2><p className="mt-6 max-w-xl text-sm leading-7 text-muted">We begin with a living starter, use excellent butter and chocolate, and make in smaller quantities than is probably sensible. The result is bread with real character, sweets with clarity, and a bakery worth seeking out.</p><div className="mt-9 grid gap-7 sm:grid-cols-3"><FeatureCard number="01" title="Leavened">Time makes a more expressive loaf.</FeatureCard><FeatureCard number="02" title="Limited">We make enough to do it well.</FeatureCard><FeatureCard number="03" title="Finished">Every order gets a final touch.</FeatureCard></div></div></Container></section>
+    <section className="overflow-hidden bg-[#f4f0e9] py-16 sm:py-24"><Container className="grid items-center gap-12 lg:grid-cols-[.72fr_1.28fr]"><div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden border border-gold/50 bg-white p-2"><video className="h-full w-full object-cover" src={videos.gifting} poster={assets.banner} autoPlay loop muted playsInline preload="metadata"/></div><div><p className="eyebrow">The art of slow</p><h2 className="mt-4 max-w-2xl font-serif text-4xl leading-[1.05] tracking-[-.04em] sm:text-5xl">Some things improve when you give them time.</h2><p className="mt-6 max-w-xl text-sm leading-7 text-muted">We begin with a living starter, use excellent butter and chocolate, and make in smaller quantities than is probably sensible. The result is bread with real character, sweets with clarity, and a bakery worth seeking out.</p><div className="mt-9 grid gap-7 sm:grid-cols-3"><FeatureCard number="01" title="Leavened">Time makes a more expressive loaf.</FeatureCard><FeatureCard number="02" title="Limited">We make enough to do it well.</FeatureCard><FeatureCard number="03" title="Finished">Every order gets a final touch.</FeatureCard></div></div></Container></section>
 
     <section className="section bg-white"><Container><div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr]"><div><p className="eyebrow">A note for the table</p><blockquote className="mt-5 max-w-xl font-serif text-3xl leading-tight tracking-[-.03em] sm:text-4xl">&ldquo;The country loaf has the kind of crust you hear before you taste.&rdquo;</blockquote><p className="mt-6 text-[10px] font-bold uppercase tracking-[.15em] text-gold">Maya R. / Weekend regular</p></div><div className="grid gap-4 sm:grid-cols-2">{testimonials.slice(1).map(testimonial => <figure key={testimonial.name} className="border border-ink/10 bg-[#fcfbf8] p-6"><blockquote className="font-serif text-xl leading-7">&ldquo;{testimonial.quote}&rdquo;</blockquote><figcaption className="mt-7 text-[10px] font-bold uppercase tracking-[.13em] text-gold">{testimonial.name}<span className="text-muted"> / {testimonial.detail}</span></figcaption></figure>)}</div></div></Container></section>
 
