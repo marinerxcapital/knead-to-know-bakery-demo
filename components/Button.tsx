@@ -1,0 +1,5 @@
+import Link from "next/link";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
+const cls = (variant:"dark"|"light"|"gold"="dark") => ({dark:"bg-ink text-white hover:bg-ink/85",light:"border border-ink/25 bg-white text-ink hover:border-gold",gold:"bg-gold text-white hover:bg-gold/85"}[variant]);
+export function Button({children,variant="dark",className="",...props}: ButtonHTMLAttributes<HTMLButtonElement>&{children:ReactNode;variant?:"dark"|"light"|"gold"}) { return <button className={`inline-flex min-h-11 items-center justify-center px-5 text-[11px] font-bold uppercase tracking-[.12em] transition ${cls(variant)} ${className}`} {...props}>{children}</button>; }
+export function ButtonLink({href,children,variant="dark",className=""}:{href:string;children:ReactNode;variant?:"dark"|"light"|"gold";className?:string}) { return <Link href={href} className={`inline-flex min-h-11 items-center justify-center px-5 text-[11px] font-bold uppercase tracking-[.12em] transition ${cls(variant)} ${className}`}>{children}</Link>; }

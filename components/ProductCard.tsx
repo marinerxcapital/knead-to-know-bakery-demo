@@ -1,0 +1,6 @@
+"use client";
+import { useCart } from "./CartProvider";
+import { Button } from "./Button";
+import type { Product } from "@/data/products";
+export function ProductCard({product}:{product:Product}){const {add}=useCart();return <article className="group flex min-h-72 flex-col border border-ink/10 bg-white p-5 transition hover:-translate-y-1 hover:shadow-soft"><div className="flex items-start justify-between gap-4"><p className="eyebrow">{product.category}</p><p className="font-serif text-lg">${product.price.toFixed(2)}</p></div><div className="mt-10"><h3 className="font-serif text-2xl leading-tight">{product.name}</h3><p className="mt-3 text-sm leading-6 text-muted">{product.description}</p></div><div className="mt-auto pt-6"><div className="mb-4 flex flex-wrap gap-2">{product.tags.slice(0,2).map(t=><span className="border border-ink/10 px-2 py-1 text-[9px] font-bold uppercase tracking-[.1em] text-muted" key={t}>{t}</span>)}</div><Button onClick={()=>add(product)} className="w-full">Add to bag</Button></div></article>}
+export function ProductGrid({products}:{products:Product[]}){return <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{products.map(p=><ProductCard product={p} key={p.id}/>)}</div>}

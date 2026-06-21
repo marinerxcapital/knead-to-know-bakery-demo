@@ -1,0 +1,3 @@
+import Image from "next/image";
+import Link from "next/link";
+export function Logo({ light=false }: { light?: boolean }) { return <Link href="/" className="group flex items-center gap-3" aria-label="Knead To Know home"><Image src="/assets/knead-to-know-logo-v1.png" width={46} height={46} className={light ? "brightness-0 invert" : ""} alt="Knead To Know logo" priority /><span className={light ? "hidden sm:block text-[10px] font-bold uppercase tracking-[.18em] text-white" : "hidden sm:block text-[10px] font-bold uppercase tracking-[.18em]"}>Knead To Know<br/><em className="font-serif font-normal tracking-[.3em] text-gold">Sweet & Sour</em></span></Link>; }

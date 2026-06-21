@@ -1,0 +1,2 @@
+import Link from "next/link";
+export function EmptyState({title="Your bag is ready for a little something.",copy="Browse the menu to find today’s bread, cookies, and pastry."}:{title?:string;copy?:string}){return <div className="border border-dashed border-ink/25 px-6 py-16 text-center"><h2 className="font-serif text-3xl">{title}</h2><p className="mx-auto mt-3 max-w-md text-sm leading-6 text-muted">{copy}</p><Link href="/menu" className="mt-7 inline-block bg-ink px-5 py-3 text-[11px] font-bold uppercase tracking-[.12em] text-white">View menu</Link></div>}

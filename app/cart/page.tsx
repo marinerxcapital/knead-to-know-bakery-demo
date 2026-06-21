@@ -1,0 +1,7 @@
+"use client";
+import { Container } from "@/components/Container";
+import { useCart } from "@/components/CartProvider";
+import { QuantitySelector } from "@/components/QuantitySelector";
+import { CartSummary } from "@/components/CartSummary";
+import { EmptyState } from "@/components/EmptyState";
+export default function Cart(){const {items,remove,update}=useCart();return <Container className="section"><p className="eyebrow">Your bag</p><h1 className="mt-3 font-serif text-5xl">A few good things.</h1>{items.length===0?<div className="mt-10"><EmptyState/></div>:<div className="mt-10 grid gap-8 lg:grid-cols-[1fr_360px]"><div className="divide-y divide-ink/10 border-y border-ink/10">{items.map(i=><article className="flex gap-5 py-5" key={i.id}><div className="grid h-20 w-20 shrink-0 place-items-center bg-ivory text-center text-[9px] font-bold uppercase tracking-[.1em] text-muted">{i.category}</div><div className="flex-1"><div className="flex justify-between gap-4"><h2 className="font-serif text-xl">{i.name}</h2><p className="font-serif">${(i.price*i.quantity).toFixed(2)}</p></div><p className="mt-1 text-xs text-muted">${i.price.toFixed(2)} each</p><div className="mt-4 flex items-center justify-between"><QuantitySelector value={i.quantity} onChange={n=>update(i.id,n)}/><button onClick={()=>remove(i.id)} className="text-[10px] font-bold uppercase tracking-[.12em] underline underline-offset-4">Remove</button></div></div></article>)}</div><CartSummary/></div>}</Container>}

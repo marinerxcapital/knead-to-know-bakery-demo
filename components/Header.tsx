@@ -1,0 +1,7 @@
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { site } from "@/data/site";
+import { Logo } from "./Logo";
+import { CartButton } from "./CartButton";
+export function Header(){const [open,setOpen]=useState(false);return <header className="sticky top-0 z-50 border-b border-ink/10 bg-white/95 backdrop-blur"><div className="mx-auto flex h-17 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12"><Logo/><nav className="hidden items-center gap-5 lg:flex">{site.nav.map(([n,h])=><Link className="text-[10px] font-bold uppercase tracking-[.11em] hover:text-gold" href={h} key={h}>{n}</Link>)}<Link href="/order-online" className="bg-ink px-4 py-3 text-[10px] font-bold uppercase tracking-[.12em] text-white">Order Online</Link><CartButton/></nav><div className="flex items-center gap-2 lg:hidden"><CartButton/><button aria-label="Toggle menu" aria-expanded={open} onClick={()=>setOpen(!open)} className="grid h-10 w-10 place-items-center border border-ink/15 text-lg">{open?"×":"☰"}</button></div></div>{open&&<nav className="border-t border-ink/10 bg-white px-5 py-5 lg:hidden">{site.nav.map(([n,h])=><Link onClick={()=>setOpen(false)} className="block border-b border-ink/10 py-3 text-xs font-bold uppercase tracking-[.14em]" href={h} key={h}>{n}</Link>)}<Link onClick={()=>setOpen(false)} className="mt-5 block bg-ink px-4 py-3 text-center text-xs font-bold uppercase tracking-[.14em] text-white" href="/order-online">Order Online</Link></nav>}</header>}

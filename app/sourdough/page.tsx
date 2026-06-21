@@ -1,0 +1,11 @@
+import type { Metadata } from "next";
+import { products } from "@/data/products";
+import { faqs } from "@/data/faqs";
+import { PageHero } from "@/components/PageHero";
+import { Container } from "@/components/Container";
+import { ProductGrid } from "@/components/ProductCard";
+import { FeatureCard } from "@/components/FeatureCard";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { CTASection } from "@/components/CTASection";
+export const metadata:Metadata={title:"Sourdough",description:"Naturally leavened sourdough baked slowly by Knead To Know."};
+export default function Sourdough(){return <><PageHero eyebrow="Naturally leavened" title="Bread with a little more to say." copy="Our loaves are fermented slowly for depth, character, and the kind of crust that makes dinner feel like an occasion." cta="Order sourdough"/><Container className="section"><ProductGrid products={products.filter(p=>p.category==="Sourdough")}/></Container><section className="section bg-ivory"><Container><div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]"><div><p className="eyebrow">The method</p><h2 className="mt-3 font-serif text-4xl">Slow is the whole point.</h2></div><div className="grid gap-8 sm:grid-cols-3"><FeatureCard number="01" title="Refresh">We tend a living starter for balanced, nuanced flavor.</FeatureCard><FeatureCard number="02" title="Ferment">Time develops the airy crumb and gentle tang.</FeatureCard><FeatureCard number="03" title="Bake">High heat brings a dramatic crust and caramelized finish.</FeatureCard></div></div></Container></section><Container className="section grid gap-10 lg:grid-cols-2"><div><p className="eyebrow">Bread care</p><h2 className="mt-3 font-serif text-3xl">Make the most of your loaf.</h2><div className="mt-6 border border-ink/15 p-6 text-sm leading-7 text-muted">Store your loaf cut-side down on the counter. Refresh in a 350°F oven for 5–8 minutes. For later, slice and freeze—then toast straight from frozen.</div></div><div><p className="eyebrow">A few good questions</p><div className="mt-4"><FAQAccordion items={faqs.slice(0,4)}/></div></div></Container><CTASection title="The table is waiting." copy="Start with a country loaf, then see where the day takes you."/></>}

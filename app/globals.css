@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply border-ink/10; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white text-ink antialiased; }
+  h1,h2,h3 { @apply font-serif; }
+  input,select,textarea { @apply w-full rounded-sm border border-ink/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-gold; }
+}
+@layer components {
+  .eyebrow { @apply text-[10px] font-bold uppercase tracking-[.22em] text-gold; }
+  .display { @apply font-serif text-4xl leading-[1.04] tracking-[-.035em] sm:text-5xl lg:text-7xl; }
+  .section { @apply py-16 sm:py-20 lg:py-28; }
+  .hairline { @apply border border-ink/10; }
+}

@@ -1,0 +1,2 @@
+"use client";
+export function QuantitySelector({value,onChange}:{value:number;onChange:(n:number)=>void}) {return <div className="inline-flex items-center border border-ink/15"><button aria-label="Decrease quantity" onClick={()=>onChange(value-1)} className="h-9 w-9 text-lg">−</button><span className="grid h-9 min-w-8 place-items-center text-xs">{value}</span><button aria-label="Increase quantity" onClick={()=>onChange(value+1)} className="h-9 w-9 text-lg">+</button></div>}
