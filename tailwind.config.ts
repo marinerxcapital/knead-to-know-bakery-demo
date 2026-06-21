@@ -5,7 +5,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: { ink: "#1E1B18", ivory: "#FBF8F2", gold: "#A47B35", beige: "#E9E0D0", muted: "#6C655E" },
-      fontFamily: { serif: ["Georgia", "Times New Roman", "serif"], sans: ["Arial", "Helvetica", "sans-serif"] },
+      fontFamily: {
+        serif: ["var(--font-serif)", "Georgia", "Times New Roman", "serif"],
+        sans: ["var(--font-sans)", "Arial", "Helvetica", "sans-serif"]
+      },
       boxShadow: { soft: "0 12px 35px rgba(30,27,24,.07)" }
     }
   },

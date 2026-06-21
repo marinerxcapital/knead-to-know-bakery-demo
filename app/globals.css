@@ -14,4 +14,6 @@
   .display { @apply font-serif text-4xl leading-[1.04] tracking-[-.035em] sm:text-5xl lg:text-7xl; }
   .section { @apply py-16 sm:py-20 lg:py-28; }
   .hairline { @apply border border-ink/10; }
+  .home-hero-video-frame video::-webkit-media-controls { display: none !important; }
+  .home-hero-video-frame video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
 }

@@ -30,22 +30,23 @@ npm start
 
 ## Component inventory
 
-Header, Footer, Logo, Button, Container, SectionHeading, ProductCard, ProductGrid, CategoryFilter, CartProvider, CartButton, CartSummary, QuantitySelector, FAQAccordion, ContactForm, CateringForm, NewsletterForm, GalleryGrid, EmptyState, PageHero, FeatureCard, and CTASection.
+Header, Footer, Logo, Button, Container, SectionHeading, ProductCard, ProductGrid, CategoryFilter, CartProvider, CartButton, CartSummary, QuantitySelector, FAQAccordion, ContactForm, CateringForm, NewsletterForm, EmptyState, PageHero, FeatureCard, GalleryShowcase, and CTASection.
 
 ## Data inventory
 
-`data/products.ts`, `testimonials.ts`, `faqs.ts`, `cateringPackages.ts`, `galleryItems.ts`, and `site.ts`.
+`data/products.ts`, `testimonials.ts`, `faqs.ts`, `cateringPackages.ts`, `galleryItems.ts`, and `site.ts` (`site.nav` drives the header; `site.footerNav` drives the footer's full sitemap so every route stays reachable).
 
 ## Styling system
 
-White and warm ivory foundation; matte `ink`, antique `gold`, and `beige` accents. Serif editorial headings, compact sans-serif navigation, thin borders, restrained shadows, responsive mobile-first grids. Shared primitives are in `app/globals.css` and `tailwind.config.ts`.
+White and warm ivory foundation; matte `ink`, antique `gold`, and `beige` accents. Headings use Playfair Display, body/navigation uses Inter — both loaded via `next/font/google` in `app/layout.tsx` and exposed as `--font-serif`/`--font-sans` in `tailwind.config.ts`. Thin borders, restrained shadows, responsive mobile-first grids. Shared primitives are in `app/globals.css` and `tailwind.config.ts`.
 
 ## Known limitations
 
 - Checkout, inquiries, newsletter, and contact forms are intentional client-only demos; no information is sent.
 - Tax is a flat demo estimate of 8.75%.
-- Gallery cards are visual placeholders until approved food photography arrives.
+- Three gallery items (oven, seeded loaf, seasonal box, 360 walk-through) remain visual placeholders until approved photography/video arrives — see `GALLERY_CONTENT.md`.
 - The original root logo remains untouched. The supplied bakery banner is safely stored in `public/assets/` and used in the home, About, and Catering hero treatments.
+- Hero/category videos are sourced from `public/assets/videos/*.mp4` (H.264, re-encoded from the original `.mov` HEVC exports for cross-browser playback). The original `.mov` source files are left in place untouched; only `lib/assets.ts` and `data/galleryItems.ts` point at the new `.mp4` versions.
 
 ## Next steps for Codex
 

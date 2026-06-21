@@ -8,8 +8,8 @@ export const assets = {
 };
 
 export const videos = {
-  hero: publicAsset("/assets/videos/the-first-loaf.mov"),
-  cookies: publicAsset("/assets/videos/brown-butter-pull-apart.mov"),
-  pastries: publicAsset("/assets/videos/the-fold.mov"),
+  hero: publicAsset("/assets/videos/the-first-loaf.mp4"),
+  cookies: publicAsset("/assets/videos/brown-butter-pull-apart.mp4"),
+  pastries: publicAsset("/assets/videos/the-fold.mp4"),
   gifting: publicAsset("/assets/videos/a-beautiful-arrival.mp4")
 };

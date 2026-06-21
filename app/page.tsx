@@ -36,10 +36,11 @@ export default function Home() {
           <div className="mt-12 flex items-center gap-7 border-t border-ink/12 pt-5 text-[10px] font-bold uppercase tracking-[.14em] text-muted"><span>Slow fermented</span><span className="h-1 w-1 rounded-full bg-gold"/><span>Small batch</span><span className="h-1 w-1 rounded-full bg-gold"/><span>Made to gather</span></div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-2xl pb-7 pr-0 sm:pr-8">
-          <div className="absolute bottom-0 right-0 h-[88%] w-[92%] border border-gold/45"/>
-          <div className="relative aspect-[16/10] overflow-hidden border border-ink/10 bg-white p-2 shadow-[0_24px_70px_rgba(49,38,25,.11)]"><video className="h-full w-full object-cover" src={videos.hero} poster={assets.banner} autoPlay loop muted playsInline preload="metadata"/></div>
-          <div className="absolute -bottom-1 left-4 max-w-[210px] border border-ink/10 bg-white px-5 py-4 shadow-soft sm:left-8"><p className="eyebrow">This week&apos;s ritual</p><p className="mt-2 font-serif text-lg leading-tight">Country loaf,<br/>cultured butter, good company.</p></div>
+        <div className="home-hero-media mx-auto w-full max-w-2xl">
+          <div className="home-hero-video-frame relative aspect-[16/10] w-full overflow-hidden border border-gold/40 bg-white shadow-[0_24px_70px_rgba(49,38,25,.11)]">
+            <video className="h-full w-full object-cover" src={videos.hero} poster={assets.banner} autoPlay loop muted playsInline preload="metadata" disablePictureInPicture controlsList="nodownload noplaybackrate noremoteplayback"/>
+          </div>
+          <div className="home-hero-ritual-card mt-5 border border-ink/10 bg-white px-5 py-4 shadow-soft sm:ml-auto sm:max-w-sm sm:px-6 sm:py-5 lg:-mr-6"><p className="eyebrow">This week&apos;s ritual</p><p className="mt-2 font-serif text-xl leading-tight sm:text-2xl">Country loaf, cultured butter, good company.</p></div>
         </div>
       </Container>
     </section>

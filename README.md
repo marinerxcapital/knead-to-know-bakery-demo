@@ -34,11 +34,12 @@ npm start
 
 ## Demo features
 
-- 14 responsive pages: home, menu, order online, product collections, catering, story, gallery, FAQ, contact, cart, checkout demo, and confirmation
+- 14 responsive pages: home, menu, order online, product collections, catering, story, gallery, FAQ, contact, cart, checkout demo, and confirmation — every page is linked from the header and/or footer, so nothing is orphaned
 - 28 realistic products across six categories
 - Cart add/update/remove/clear behavior persisted in `localStorage`
 - Accessible accordion, mobile navigation, buttons, forms, and input labels
 - Demo-only contact, catering, newsletter, and checkout confirmations
+- Editorial typography via `next/font/google` (Playfair Display + Inter), and H.264 `.mp4` hero/category videos for reliable autoplay across Chrome, Edge, Firefox, and Safari
 
 ## Deployment and handoff
 
